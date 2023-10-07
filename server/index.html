@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trigger Notation Download</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        p {
+            font-size: 18px;
+            color: #666;
+            text-align: center;
+        }
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 20px auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>TriggerNotation download page</h1>
+    <p>Download this free version of your favorite program</p>
+    
+    <button onclick='download()' style='display: block;'>Download TriggerNotation</button>
+    <script>
+            function download() {
+                fetch('/TriggerNotation.exe')
+                    .then(response => response.blob())
+                    .then(blob => {
+                        const url = window.URL.createObjectURL(new Blob([blob]));
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.setAttribute('download', 'TriggerNotation.exe');
+                        document.body.appendChild(link);
+                        link.click();
+                        link.parentNode.removeChild(link);
+                    });
+            }
+    </script>
+</body>
+</html>
